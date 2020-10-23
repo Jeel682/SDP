@@ -27,6 +27,8 @@ function Products({
   setproducts,
 }) {
   const [name, setname] = useState("");
+  const [description, setdescription] = useState("");
+  const [city, setcity] = useState("");
   const [imageURL, setimageURL] = useState("");
   const [cost, setcost] = useState("");
 
@@ -148,7 +150,7 @@ function Products({
         >
           Insert Product
         </button> */}
-        {customer === "Test1" &&  (<Button
+        {customer === "admin" &&  (<Button
           variant="primary"
           onClick={handleShow}
           className="btn btn-danger float-right mt-0 btn-lg"
@@ -158,6 +160,7 @@ function Products({
         </Button>)}
 
         <div className="products">
+          <h4>{category}</h4>
           {getProductsInCategory().map((product, idx) => (
             <Card
               style={{ width: "25rem", marginTop: 20, marginLeft: 30 }}
@@ -166,7 +169,8 @@ function Products({
               <Card.Img variant="top" src={product.image} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-
+                <Card.Title>{product.city}</Card.Title>	
+                <para>{product.description}</para>
                 <h4>₹{product.cost}</h4>
                 <button
                   className="btn btn-success btn-lg"
@@ -295,6 +299,45 @@ function Products({
                     placeholder="Enter Name"
                     value={name}
                     onInput={(e) => setname(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  class="col-sm-2 col-form-label"
+                  style={{ fontSize: 15, fontWeight: "bold" }}
+                >
+                  City
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder="Enter City"
+                    value={city}
+                    onInput={(e) => setcity(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="col-sm-2 col-form-label"
+                  style={{ fontSize: 15, fontWeight: "bold" }}
+                >
+                  Description
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder="Enter Description"
+                    value={description}
+                    onInput={(e) => setdescription(e.target.value)}
                     required
                   />
                 </div>

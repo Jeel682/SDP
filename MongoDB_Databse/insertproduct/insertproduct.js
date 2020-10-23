@@ -10,6 +10,8 @@ let insertproduct = require("express")
           {
             category: req.body.category,
             name: req.body.name,
+            city: req.body.city,
+            description: req.body.description,
             cost: req.body.cost,
             image: req.body.image,
           },

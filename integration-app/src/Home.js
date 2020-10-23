@@ -190,6 +190,7 @@ function Home() {
 
           {customer !== "" && (
             <Typography variant="h5">Hello {customer}</Typography>
+            
           )}
 
           {customer === "" && (
@@ -220,6 +221,7 @@ function Home() {
                 variant="outline-success"
                 onClick={(e) => {
                   setcustomer("");
+                  navigateTo(PAGE_HOME);
                 }}
                 style={{ marginRight: 50, marginLeft: 20 }}
               >
@@ -249,7 +251,10 @@ function Home() {
           setproducts={setproducts}
         />
       )}
-      {page === PAGE_CART && <Cart cart={cart} setCart={setCart} />}
+      {page === PAGE_CART && (
+        <Cart cart={cart} setCart={setCart} customer={customer} />
+      )}
+
       {page === PAGE_HOME && (
         <div class="container">
           <div class="row">

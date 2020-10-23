@@ -337,10 +337,10 @@ class Registration extends React.Component {
                   Enter Wedding Date
                 </Form.Label>
                 <div class="col-sm-10">
-                  <input type="date" ref="weddingdate" required />
+                  <input type="date" ref="weddingdate" required min="2020-10-16" />
                 </div>
                 <div style={{ marginTop: 5 }}>
-                  By creating an account you agree to our
+                  
                   <div
                     style={{
                       marginLeft: 290,
@@ -350,7 +350,7 @@ class Registration extends React.Component {
                       textDecoration: "underline",
                     }}
                   >
-                    Terms & Privacy.
+                    
                   </div>
                 </div>
               </div>
