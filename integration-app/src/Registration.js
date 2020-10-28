@@ -337,21 +337,12 @@ class Registration extends React.Component {
                   Enter Wedding Date
                 </Form.Label>
                 <div class="col-sm-10">
-                  <input type="date" ref="weddingdate" required min="2020-10-16" />
-                </div>
-                <div style={{ marginTop: 5 }}>
-                  
-                  <div
-                    style={{
-                      marginLeft: 290,
-                      marginTop: -23.5,
-                      color: "cyan",
-                      fontWeight: "bold",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    
-                  </div>
+                  <input
+                    type="date"
+                    ref="weddingdate"
+                    required
+                    min="2020-10-16"
+                  />
                 </div>
               </div>
             </Form>

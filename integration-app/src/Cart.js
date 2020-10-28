@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Cart({ cart, setCart,customer }) {
+export default function Cart({ cart, setCart, customer }) {
   const getTotalSum = () => {
     return cart.reduce((sum, { cost, quantity }) => sum + cost * quantity, 0);
   };
@@ -109,7 +109,7 @@ export default function Cart({ cart, setCart,customer }) {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <h2>{customer}</h2>
+              <h1>{customer}</h1>
               <div class="table-responsive">
                 {cart.map((product, idx) => (
                   <table class="table">

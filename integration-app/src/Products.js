@@ -55,14 +55,6 @@ function Products({
     }
   };
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const getProductsInCategory = () => {
-    return products.filter((product) => product.category === category);
-  };
   const deletefromdb = (product) => {
     if (customer === "") {
       alert("Please Log In first");
@@ -75,12 +67,21 @@ function Products({
         _id: product._id,
       };
       setproducts(products.filter((item) => item._id !== product._id));
-      xhr.send(JSON.stringify(obj));
+      xhr.send(JSON.stringify(product));
       swal({
         title: "Product Deleted",
         icon: "success",
       });
     }
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const getProductsInCategory = () => {
+    return products.filter((product) => product.category === category);
   };
 
   const save = () => {
@@ -98,6 +99,8 @@ function Products({
       let obj = {
         category: category,
         name: name,
+        city: city,
+        description: description,
         cost: cost,
         image: imageURL,
       };
@@ -150,14 +153,15 @@ function Products({
         >
           Insert Product
         </button> */}
-        {customer === "admin" &&  (<Button
-          variant="primary"
-          onClick={handleShow}
-          className="btn btn-danger float-right mt-0 btn-lg"
-        >
-          Insert Product
-        
-        </Button>)}
+        {customer === "admin" && (
+          <Button
+            variant="primary"
+            onClick={handleShow}
+            className="btn btn-danger float-right mt-0 btn-lg"
+          >
+            Insert Product
+          </Button>
+        )}
 
         <div className="products">
           <h4>{category}</h4>
@@ -169,7 +173,7 @@ function Products({
               <Card.Img variant="top" src={product.image} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-                <Card.Title>{product.city}</Card.Title>	
+                <Card.Title>{product.city}</Card.Title>
                 <para>{product.description}</para>
                 <h4>₹{product.cost}</h4>
                 <button
@@ -178,10 +182,8 @@ function Products({
                 >
                   Add to Package
                 </button>
-                
-               
 
-                {customer === "Test1" && (
+                {customer === "admin" && (
                   <button
                     className="btn btn-danger float-right mt-0 btn-lg"
                     onClick={() => deletefromdb(product)}
@@ -189,8 +191,6 @@ function Products({
                     Delete
                   </button>
                 )}
-
-
               </Card.Body>
             </Card>
           ))}
@@ -303,6 +303,7 @@ function Products({
                   />
                 </div>
               </div>
+
               <div class="form-group row">
                 <label
                   class="col-sm-2 col-form-label"

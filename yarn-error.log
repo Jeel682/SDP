@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\jelyt\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add express body-parser cors mongodb@2.2.32 jwt-simple-save
+
+PATH: 
+  C:\Python38\Scripts\;C:\Python38\;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Java\jdk1.8.0_261\bin;C:\Program Files\Java\jre1.8.0_261\bin;C:\Program Files\Java\jdk1.6.0_45\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jre6\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Users\jelyt\Downloads\netbeans-6.1-ml-windows;C:\Program Files\MongoDB\Server\4.4\bin;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;F:\ANACONDA;F:\ANACONDA\Library\mingw-w64\bin;F:\ANACONDA\Library\usr\bin;F:\ANACONDA\Library\bin;F:\ANACONDA\Scripts;C:\Users\jelyt\AppData\Local\Microsoft\WindowsApps;C:\Users\jelyt\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jelyt\AppData\Roaming\npm;C:\Users\jelyt\.dotnet\tools
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.10.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/jwt-simple-save: Not found
+      at Request.params.callback [as _callback] (C:\Users\jelyt\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+      at Request.self.callback (C:\Users\jelyt\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (C:\Users\jelyt\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (C:\Users\jelyt\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1252:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

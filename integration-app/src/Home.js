@@ -186,11 +186,20 @@ function Home() {
             </Nav.Link>
           </Nav>
 
-          
-
           {customer !== "" && (
-            <Typography variant="h5">Hello {customer}</Typography>
-            
+            <Form inline>
+              <Typography variant="h5">Hello {customer}</Typography>
+              <Button
+                variant="outline-success"
+                onClick={(e) => {
+                  setcustomer("");
+                  navigateTo(PAGE_HOME);
+                }}
+                style={{ marginRight: 50, marginLeft: 20 }}
+              >
+                Logout
+              </Button>
+            </Form>
           )}
 
           {customer === "" && (
@@ -211,21 +220,6 @@ function Home() {
                 onClick={() => navigateTo(PAGE_LOGIN)}
               >
                 LOGIN
-              </Button>
-            </Form>
-          )}
-          {customer !== "" && (
-            <Form inline>
-              <Typography variant="h5"></Typography>
-              <Button
-                variant="outline-success"
-                onClick={(e) => {
-                  setcustomer("");
-                  navigateTo(PAGE_HOME);
-                }}
-                style={{ marginRight: 50, marginLeft: 20 }}
-              >
-                Logout
               </Button>
             </Form>
           )}
@@ -254,7 +248,6 @@ function Home() {
       {page === PAGE_CART && (
         <Cart cart={cart} setCart={setCart} customer={customer} />
       )}
-
       {page === PAGE_HOME && (
         <div class="container">
           <div class="row">

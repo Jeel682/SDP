@@ -7,7 +7,7 @@ let deleteproduct = require("express")
       if (err) throw err;
       else {
         db.collection("products").deleteOne(
-          { p_id: req.body.p_id },
+          { name: req.body.name },
           (err, result) => {
             if (err) throw err;
             else {
