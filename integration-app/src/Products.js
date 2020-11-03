@@ -10,6 +10,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/form";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
+import { FirstPage } from "@material-ui/icons";
 const PHOTOS_VIDEO = "Photo & Video";
 const BRIDAL = "Bridal Wear";
 const MAKEUP = "Makeup";
@@ -31,7 +32,10 @@ function Products({
   const [city, setcity] = useState("");
   const [imageURL, setimageURL] = useState("");
   const [cost, setcost] = useState("");
-
+  const [first,setfirst]= useState("");
+ const [filtercity,setfiltercity]= useState("");
+  const [second,setsecond]= useState("");
+  
   const addToCart = (product) => {
     if (customer === "") {
       alert("Please Log In first");
@@ -54,7 +58,63 @@ function Products({
       });
     }
   };
+  let loadProducts = () => {
+    var xhr = new XMLHttpRequest();
+    // get a callback when the server responds
+    xhr.addEventListener("load", () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText);
+      setproducts(JSON.parse(xhr.responseText));
+    });
+    // open the request with the verb and the url
+    xhr.open("Get", "http://localhost:8080/fetch");
+    xhr.send();
+  };
+  const filterCart = () => {
+    loadProducts();
+   
+  };
+  const [show, setShow] = useState(false);
 
+  //const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const getProductsInCategory = () => {
+    let tempfirst=0;
+    let tempsecond=100000000;
+    if(first!=="")
+    {
+      tempfirst = parseInt(first, 10 );
+    }
+    if(second!=="")
+    {
+      tempsecond = parseInt(second, 10 );
+    }
+    if(filtercity !="")
+    {
+      return products.filter((product) => product.category === category &&  parseInt(product.cost, 10 )   > tempfirst  &&  parseInt(product.cost, 10 )   < tempsecond && product.city === filtercity);  
+    }
+    else
+    {
+      return products.filter((product) => product.category === category &&  parseInt(product.cost, 10 )   > tempfirst  &&  parseInt(product.cost, 10 )   < tempsecond);
+    }
+    // if(first ==undefined  || first === 0 || first === "" &&  (second==="" || second=== undefined || second===0) )
+    // {
+    //   return products.filter((product) => product.category === category);
+    // }
+    // else if(first !== 0 && first !== "" && second == undefined  || second === 0 || second === "")
+    // {
+    //   return products.filter((product) => product.category === category &&  parseInt(product.cost, 10 )   > parseInt(first, 10 ));
+    // }
+    // else if(second !== 0 && second !== "" && first == undefined  || first === 0 || first === "")
+    // {
+    // return products.filter((product) => product.category === category && parseInt(product.cost, 10 )   < parseInt(second, 10 ));
+    // }
+    // else
+    // {
+    //   return products.filter((product) => product.category === category &&  parseInt(product.cost, 10 )   > parseInt(first, 10 ) &&  parseInt(product.cost, 10 )   < parseInt(second, 10 ));
+    // }
+  };
   const deletefromdb = (product) => {
     if (customer === "") {
       alert("Please Log In first");
@@ -75,14 +135,14 @@ function Products({
     }
   };
 
-  const [show, setShow] = useState(false);
+  //const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  //const handleShow = () => setShow(true);
 
-  const getProductsInCategory = () => {
-    return products.filter((product) => product.category === category);
-  };
+  //const getProductsInCategory = () => {
+   // return products.filter((product) => product.category === category);
+  //};
 
   const save = () => {
     if (validate()) {
@@ -164,7 +224,13 @@ function Products({
         )}
 
         <div className="products">
-          <h4>{category}</h4>
+          <h4>{category} <div>
+              Price Range : <input type={Text} placeholder='0'  onInput={(e) => setfirst(e.target.value)}  ></input> - <input  type={Text} placeholder='1000000'  onInput={(e) => setsecond(e.target.value)}></input>
+              </div>
+              <div>
+              Enter City : <input type={Text} placeholder='Please add City Name'  onInput={(e) => setfiltercity(e.target.value)}  ></input> 
+            </div>     
+  </h4>
           {getProductsInCategory().map((product, idx) => (
             <Card
               style={{ width: "25rem", marginTop: 20, marginLeft: 30 }}

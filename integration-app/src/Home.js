@@ -25,8 +25,10 @@ import Login from "./Login";
 import Typography from "@material-ui/core/Typography";
 import Products from "./Products";
 import Cart from "./Cart";
+import PackageCart from "./PackagePlan";
 const PAGE_PRODUCTS = "products";
 const PAGE_CART = "cart";
+const PAGE_PACKAGEPLAN = "PackagePlan";
 const PAGE_HOME = "HomeContent";
 const PAGE_PORTFOLIO = "Portfolio";
 const PAGE_LOGIN = "Login";
@@ -248,6 +250,9 @@ function Home() {
       {page === PAGE_CART && (
         <Cart cart={cart} setCart={setCart} customer={customer} />
       )}
+      {page === PAGE_PACKAGEPLAN && (
+        <PackageCart cart={cart} setCart={setCart} customer={customer} PackagePlan1={true} />
+      )}
       {page === PAGE_HOME && (
         <div class="container">
           <div class="row">
@@ -306,7 +311,7 @@ function Home() {
             <div class="col-sm-4 mt-4">
               <img
                 src={require("./img/package.png")}
-                onClick={() => navigateTo(PAGE_CART)}
+                onClick={() => navigateTo(PAGE_PACKAGEPLAN)}
                 style={{ cursor: "pointer" }}
               />
             </div>
